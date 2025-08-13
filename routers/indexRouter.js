@@ -1,25 +1,11 @@
 const { Router } = require("express");
 const path = require("path");
 const indexRouter = Router();
-
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-  },
-];
-
-//views
+const db = require("../db");
 
 //call middleware
 indexRouter.get("/", (req, res) => {
-  res.render("index", { messages: messages });
+  res.render("index", { title: "Mini Message Board", messages: db.messages });
 });
 
 module.exports = indexRouter;
