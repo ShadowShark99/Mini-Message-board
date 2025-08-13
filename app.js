@@ -3,6 +3,9 @@ const indexRouter = require("./routers/indexRouter");
 const path = require("path");
 const app = express();
 
+//to allow extraction from post requests
+app.use(express.urlencoded({ extended: true }));
+
 const messages = [
   {
     text: "Hi there!",
@@ -32,6 +35,15 @@ app.get("/", (req, res) => {
 
 app.get("/new", (req, res) => {
   res.render("form");
+});
+
+app.post("/new", (req, res) => {
+  messages.push({
+    text: req.body.message,
+    user: req.body.author,
+    added: new Date(),
+  });
+  res.redirect("/");
 });
 
 const PORT = process.env.PORT || 3000;
