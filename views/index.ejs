@@ -7,17 +7,7 @@
     <h1><%= title %></h1>
     <ul>
       <% for (let i = 0; i < messages.length; i++) { %>
-      <div>
-        <h4>
-          <span> <%= messages[i].user %> </span>
-        </h4>
-        <div>
-          <span> <%= messages[i].text %> </span>
-        </div>
-        <div>
-          <span> <%= messages[i].added %> </span>
-        </div>
-      </div>
+      <div><%- include("message", {message: messages[i]})%></div>
       <% } %>
     </ul>
     <a href="/new">Send a Message!</a>
