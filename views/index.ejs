@@ -8,7 +8,10 @@
     <ul>
       <% for (let i = 0; i < messages.length; i++) { %>
       <div><%- include("message", {message: messages[i]})%></div>
-      <button type="submit">Open</button>
+      <form action="/message" method="POST">
+        <input type="hidden" name="index" value="<%= i %>" />
+        <button type="submit">Open</button>
+      </form>
       <% } %>
     </ul>
     <a href="/new">Send a Message!</a>
