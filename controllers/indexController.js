@@ -6,9 +6,8 @@ exports.messagesGet = async (req, res) => {
 };
 
 exports.messagesPost = async (req, res) => {
-  console.log("Post");
   const i = parseInt(req.body.index, 10);
-  const message = db.messages[i];
+  const message = await db.getMessage(i);
   if (!message) {
     return res.status(404).send("Message not found");
   }
