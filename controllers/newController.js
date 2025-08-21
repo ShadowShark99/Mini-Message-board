@@ -1,14 +1,11 @@
-const db = require("../db");
+const db = require("../db/queries");
 
 exports.newGet = (req, res) => {
   res.render("form");
 };
 
-exports.newPost = (req, res) => {
-  db.messages.push({
-    text: req.body.message,
-    user: req.body.author,
-    added: new Date(),
-  });
+exports.newPost = async (req, res) => {
+  const {message, author} = req.body;
+  await db.newMessage({username: author, message, date: new Date()});
   res.redirect("/");
 }

@@ -1,7 +1,8 @@
-const db = require("../db");
+const db = require("../db/queries");
 
 exports.messagesGet = async (req, res) => {
-  res.render("index", { title: "Mini Message Board", messages: db.messages });
+  const messages = await db.getAllMessages();
+  res.render("index", { title: "Mini Message Board", messages, });
 };
 
 exports.messagesPost = async (req, res) => {
