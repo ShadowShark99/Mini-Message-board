@@ -1,0 +1,6 @@
+<%- include("message", {message: message}) %>
+<form action="/delete" method="POST">
+  <input type="hidden" name="index" value="<%= message.id %>"/>
+  <button type="submit">Delete</button>
+</form>
+<a href="/"> Back Home</a>

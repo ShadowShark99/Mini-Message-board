@@ -11,5 +11,12 @@ exports.messagesPost = async (req, res) => {
   if (!message) {
     return res.status(404).send("Message not found");
   }
-  res.render("message", { message });
+  res.render("messageOpen", { message });
+}
+
+exports.deletePost = async (req,res) => {
+  const i = parseInt(req.body.index, 10);
+  //console.log(i);
+  await db.deleteMessage(i);
+  res.redirect("/");
 }

@@ -14,12 +14,13 @@ async function newMessage(message){
   await pool.query("INSERT INTO messages (username, text) VALUES ($1, $2)", [message.username, message.text]);
 }
 
-async function deleteMessage(message){
-
+async function deleteMessage(id){
+  await pool.query("DELETE FROM messages WHERE id = $1", [id]);
 }
 
 module.exports = {
   getAllMessages,
   getMessage,
   newMessage,
+  deleteMessage,
 };

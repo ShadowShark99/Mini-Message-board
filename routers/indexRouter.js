@@ -6,5 +6,6 @@ const indexController = require("../controllers/indexController.js");
 //call middleware
 indexRouter.get("/", indexController.messagesGet);
 indexRouter.post("/message", indexController.messagesPost);
+indexRouter.post("/delete", indexController.deletePost);
 
 module.exports = indexRouter;
